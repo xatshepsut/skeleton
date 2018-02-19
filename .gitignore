@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+out/
+
+# Dependencies
+.dependencies/
+include/
+lib/
+.ldflags
+
+# Compilation flags
+.cxxflags
+.clang
+
+# Temporoaies
+temp/
