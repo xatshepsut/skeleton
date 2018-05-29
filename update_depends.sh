@@ -10,6 +10,10 @@ cd libsimple_geom
 git pull -r
 cd ..
 
+cd libsimple_sdlcore
+git pull -r
+cd ..
+
 cd libsimple_graphical
 git pull -r
 cd ..
