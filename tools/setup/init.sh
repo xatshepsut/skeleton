@@ -8,4 +8,4 @@ git clone https://github.com/namark/libsimple_geom
 git clone https://github.com/namark/libsimple_sdlcore
 git clone https://github.com/namark/libsimple_graphical
 cd ..
-./tools/deps/install.sh "$@"
+./tools/setup/install.sh "$@"

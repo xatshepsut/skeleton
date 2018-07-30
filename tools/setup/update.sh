@@ -20,5 +20,5 @@ cd ..
 
 cd ..
 
-./tools/deps/install.sh "$@"
+./tools/setup/install.sh "$@"
 
