@@ -1,12 +1,9 @@
 # Basic system setup
 
-This guide provides steps to install software necessary for
-SDL 2 library and C++17 code development on Ubuntu.
-
 Required software:
-1. Git (for scripts in tools/setup/)
-2. C++ 17 compliant compiler
-3. SDL 2 library
+1. Git (for scripts in tools/setup/).
+2. C++ 17 compliant compiler, to compile dependencies and the project itself.
+3. SDL 2.0.0 library or newer
 
 ### Ubuntu / Debian
 
