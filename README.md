@@ -2,6 +2,6 @@
 So far it's just a blocky scull.
 
 # How to make it work
-[Prerequisites](docs/1.%20Installation.md) <br />
-[Compiling](docs/2.%20Compilation%20and%20Start.md) <br />
-[Dependency management](docs/3.%20Dependency%20Management.md)
+[Basic setup](docs/1_basic_system_setup.md) <br />
+[Compiling](docs/2_compilation_and_start.md) <br />
+[Dependency management](docs/3_dependency_management.md)
