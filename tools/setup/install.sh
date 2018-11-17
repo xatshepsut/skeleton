@@ -29,4 +29,8 @@ cd libsimple_interactive
 make install PREFIX=../../ "$@"
 cd ..
 
+cd nanovg
+make install GL=2 PREFIX=../../ "$@"
+cd ..
+
 cd ..

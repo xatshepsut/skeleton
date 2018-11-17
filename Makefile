@@ -5,7 +5,7 @@ override CPPFLAGS	+= $(shell cat .cxxflags | xargs)
 override CPPFLAGS	+= -I./include
 override LDFLAGS	+= $(shell cat .ldflags | xargs)
 override LDFLAGS	+= -L./lib
-override LDLIBS		+= -lsimple_graphical -lsimple_sdlcore -lSDL2main -lSDL2 -lpthread
+override LDLIBS		+= -lsimple_graphical -lsimple_interactive -lsimple_sdlcore -lSDL2main -lSDL2 -lpthread -lnanovg -lGL -lGLEW
 
 SOURCES	:= $(shell echo *.cpp)
 TEMPDIR	:= temp

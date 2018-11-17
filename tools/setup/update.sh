@@ -22,6 +22,10 @@ cd libsimple_interactive
 git pull -r
 cd ..
 
+cd nanovg
+git pull -r
+cd ..
+
 cd ..
 
 ./tools/setup/install.sh "$@"
