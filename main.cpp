@@ -10,38 +10,38 @@ using namespace std::chrono_literals;
 using namespace simple;
 using namespace graphical::color_literals;
 
-using graphical::point2D;
+using graphical::int2;
 using graphical::range2D;
-using graphical::vector2D;
+using graphical::float2;
 using graphical::anchored_rect;
 using window = graphical::software_window;
 
-constexpr vector2D half = vector2D::one() * 0.5f;
+constexpr float2 half = float2::one() * 0.5f;
 
 int main() try
 {
 	graphical::initializer init;
 
-	window win("Skeleton", point2D(600, 600), window::flags::borderless);
+	window win("Skeleton", int2(600, 600), window::flags::borderless);
 	const auto black = win.surface().format().color(0x0_rgb);
 	const auto white = win.surface().format().color(0xffffff_rgb);
 
-	anchored_rect scull {win.size()*60/100, win.size()/2 - win.size()*point2D::j()*10/100, half};
+	anchored_rect scull {win.size()*60/100, win.size()/2 - win.size()*int2::j()*10/100, half};
 
-	anchored_rect right_eye {scull.size*30/100, scull.position - scull.size*25/100*point2D::i(), half};
-	anchored_rect left_eye {scull.size*30/100, scull.position - scull.size*25/100*-point2D::i(), half};
-	left_eye.position += point2D::j() * scull.size*10/100;
-	right_eye.position += point2D::j() * scull.size*10/100;
+	anchored_rect right_eye {scull.size*30/100, scull.position - scull.size*25/100*int2::i(), half};
+	anchored_rect left_eye {scull.size*30/100, scull.position - scull.size*25/100*-int2::i(), half};
+	left_eye.position += int2::j() * scull.size*10/100;
+	right_eye.position += int2::j() * scull.size*10/100;
 
-	anchored_rect nose {scull.size*25/100, scull.position + scull.size*35/100*point2D::j(), half * vector2D::i()};
+	anchored_rect nose {scull.size*25/100, scull.position + scull.size*35/100*int2::j(), half * float2::i()};
 	const int nose_levels = 10;
 
 
-	anchored_rect middle_tooth {scull.size*20/100, scull.position + scull.size/2*point2D::j(), half * vector2D::i()};
+	anchored_rect middle_tooth {scull.size*20/100, scull.position + scull.size/2*int2::j(), half * float2::i()};
 	auto left_tooth = middle_tooth;
 	auto right_tooth = middle_tooth;
-	left_tooth.position += point2D::i() * left_tooth.size*110/100;
-	right_tooth.position -= point2D::i() * left_tooth.size*110/100;
+	left_tooth.position += int2::i() * left_tooth.size*110/100;
+	right_tooth.position -= int2::i() * left_tooth.size*110/100;
 
 	graphical::fill(win.surface(), black);
 
@@ -52,12 +52,12 @@ int main() try
 
 	auto step = nose.size/nose_levels;
 	auto n = nose;
-	n.size -= point2D::j() * (n.size - step);
-	while( n.size > point2D::zero() )
+	n.size -= int2::j() * (n.size - step);
+	while( n.size > int2::zero() )
 	{
 		graphical::fill(win.surface(), black, n);
-		n.position -= point2D::j() * step;
-		n.size -= point2D::i() * step;
+		n.position -= int2::j() * step;
+		n.size -= int2::i() * step;
 	}
 
 	graphical::fill(win.surface(), white, left_tooth);
