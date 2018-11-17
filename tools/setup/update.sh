@@ -18,6 +18,10 @@ cd libsimple_graphical
 git pull -r
 cd ..
 
+cd libsimple_interactive
+git pull -r
+cd ..
+
 cd ..
 
 ./tools/setup/install.sh "$@"
