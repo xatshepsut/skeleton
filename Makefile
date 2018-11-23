@@ -40,4 +40,4 @@ distclean: clean
 -include $(DEPENDS)
 
 .PRECIOUS : $(OBJECTS)
-.PHONY : test clean distclean
+.PHONY : clean distclean
