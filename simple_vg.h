@@ -1,3 +1,6 @@
+#ifndef SIMPLE_VG_H
+#define SIMPLE_VG_H
+
 #include <memory>
 #include "nanovg_full.h"
 #include "simple/support/enum_flags_operators.hpp"
@@ -104,3 +107,5 @@ namespace simple::vg
 
 template<> struct simple::support::define_enum_flags_operators<simple::vg::canvas::flags>
 	: std::true_type {};
+
+#endif /* end of include guard */
