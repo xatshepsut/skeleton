@@ -1,5 +1,5 @@
 # skeleton
-So far it's just a blocky scull.
+So far it's just a not so blocky scull.
 
 # How to make it work
 [Basic setup](docs/1_basic_system_setup.md) <br />
