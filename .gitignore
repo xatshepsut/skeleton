@@ -42,5 +42,5 @@ lib/
 .cxxflags
 .clang
 
-# Temporoaies
+# Temporaries
 temp/
