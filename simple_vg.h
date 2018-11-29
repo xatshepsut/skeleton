@@ -36,6 +36,7 @@ namespace simple::vg
 		canvas(flags) noexcept;
 
 		canvas& clear(const rgba_vector& color = rgba_vector::white()) noexcept;
+		canvas& clear(const rgba_pixel& color) noexcept;
 
 		frame begin_frame(float2 size, float pixelRatio = 1) noexcept;
 
@@ -59,10 +60,12 @@ namespace simple::vg
 		public:
 			sketch begin_sketch() noexcept;
 			~frame() noexcept;
+			frame(const frame&) = delete;
+			frame(frame&&) noexcept;
+			const float2 size;
+			const float pixelRatio;
 		private:
 			NVGcontext* context;
-			float2 size;
-			float pixelRatio;
 			frame(NVGcontext*, float2 size, float pixelRatio = 1) noexcept;
 			friend class canvas;
 	};
@@ -86,16 +89,21 @@ namespace simple::vg
 
 			sketch& ellipse(const range2f&) noexcept;
 			sketch& rectangle(const range2f&) noexcept;
+			sketch& line(float2 from, float2 to) noexcept;
 
 			sketch& fill(const rgba_vector& color) noexcept;
+			sketch& fill(const rgba_pixel& color) noexcept;
 			sketch& fill() noexcept;
 			sketch& line_cap(cap) noexcept;
 			sketch& line_join(join) noexcept;
 			sketch& line_width(float) noexcept;
 			sketch& miter_limit(float) noexcept;
 			sketch& outline(const rgba_vector& color) noexcept;
+			sketch& outline(const rgba_pixel& color) noexcept;
 			sketch& outline() noexcept;
 
+			sketch(const sketch&) = delete;
+			sketch(sketch&&) noexcept;
 			~sketch() noexcept;
 		private:
 			NVGcontext* context;

@@ -36,22 +36,36 @@ canvas& canvas::clear(const rgba_vector& color) noexcept
 	return *this;
 }
 
+canvas& canvas::clear(const rgba_pixel& color) noexcept
+{
+	return clear(rgba_vector(color));
+}
+
 frame canvas::begin_frame(float2 size, float pixelRatio) noexcept
 {
 	return frame(raw.get(), size, pixelRatio);
 }
 
 frame::frame(NVGcontext* context, float2 size, float pixelRatio) noexcept :
-	context(context),
 	size(size),
-	pixelRatio(pixelRatio)
+	pixelRatio(pixelRatio),
+	context(context)
 {
 	nvgBeginFrame(context, size.x(), size.y(), pixelRatio);
 }
 
+frame::frame(frame&& other) noexcept :
+	size(other.size),
+	pixelRatio(other.pixelRatio),
+	context(other.context)
+{
+	other.context = nullptr;
+}
+
 frame::~frame() noexcept
 {
-	nvgEndFrame(context);
+	if(context)
+		nvgEndFrame(context);
 }
 
 sketch frame::begin_sketch() noexcept
@@ -66,9 +80,16 @@ sketch::sketch(NVGcontext* context) noexcept :
 	nvgBeginPath(context);
 }
 
+sketch::sketch(sketch&& other) noexcept
+{
+	context = other.context;
+	other.context = nullptr;
+}
+
 sketch::~sketch() noexcept
 {
-	nvgRestore(context);
+	if(context)
+		nvgRestore(context);
 }
 
 void ellipse(NVGcontext* context, const float2& center, const float2& radius) noexcept
@@ -97,10 +118,22 @@ sketch& sketch::rectangle(const range2f& bounds) noexcept
 	return *this;
 }
 
+sketch& sketch::line(float2 from, float2 to) noexcept
+{
+	nvgMoveTo(context, from.x(), from.y());
+	nvgLineTo(context, to.x(), to.y());
+	return *this;
+}
+
 sketch& sketch::fill(const rgba_vector& color) noexcept
 {
 	nvgFillColor(context, nvgRGBAf(color.r(), color.g(), color.b(), color.a()));
 	return fill();
+}
+
+sketch& sketch::fill(const rgba_pixel& color) noexcept
+{
+	return fill(rgba_vector(color));
 }
 
 sketch& sketch::fill() noexcept
@@ -137,6 +170,11 @@ sketch& sketch::outline(const rgba_vector& color) noexcept
 {
 	nvgStrokeColor(context, nvgRGBAf(color.r(), color.g(), color.b(), color.a()));
 	return outline();
+}
+
+sketch& sketch::outline(const rgba_pixel& color) noexcept
+{
+	return outline(rgba_vector(color));
 }
 
 sketch& sketch::outline() noexcept
